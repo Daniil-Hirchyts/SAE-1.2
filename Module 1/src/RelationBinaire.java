@@ -378,7 +378,7 @@ public class RelationBinaire {
 	résultat : la fermeture transitive de this
     */
     public RelationBinaire ferTrans(){
-	
+        return 0;
     }
 
     //______________________________________________
@@ -389,7 +389,6 @@ public class RelationBinaire {
                 Hasse, fermeture transitive de Hasse et fermeture transitive de Hasse avec boucles (sous 2 formes aussi) 
     */
     public void afficheDivers(){
-
     }
 
     //______________________________________________

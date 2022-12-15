@@ -239,15 +239,80 @@ public class Ut {
 
 	// Pré-requis : matrices booléennes carrées de même dimension
 	// Résultat : Addition terme à terme de 2 matrices booléennes carrées de même dimension (correspondant au 􏰀ou􏰁 logique terme à terme)
-	public boolean[][] addMatBool(boolean[][] M1,boolean[][] M2){
-		boolean[][] M3= new boolean[M1.length][M1[0].length]
+	public static boolean[][] addMatBool(boolean[][] M1,boolean[][] M2){
+		boolean[][] M3= new boolean[M1.length][M1[0].length];
 		for(int i=0;i<M1.length;i++){
 			for(int j=0;j< M1[0].length;j++){
-				if(M1[i][j]==1 || M2[i][j]==1){
-					M3[i][j]=1;
+				if(M1[i][j]==true || M2[i][j]==true){
+					M3[i][j]=true;
+				}
+				else{
+					M3[i][j]=false;
 				}
 			}
 		}
 		return M3;
+	}
+	// Pré-requis : matrice booléennes
+	// Résultat : 􏰁 renvoie rien mais affiche une matrice boolean.
+	public static void afficher(boolean[][] M1){
+		System.out.println("{");
+		for(int i=0;i<M1.length;i++){
+			if(i!=0){
+				System.out.println("},");
+			}
+			for(int j=0;j< M1[0].length;j++){
+				if(j==0){
+					System.out.print("  {");
+				}
+				System.out.print(M1[i][j]);
+				if(j!=M1[0].length-1){
+					System.out.print(", ");
+				}
+			}
+		}
+		System.out.println("}");
+		System.out.println("};");
+	}
+	// Pré-requis : matrices booléennes carrées de même dimension
+	// Résultat : Multiplication terme à terme de 2 matrices booléennes carrées de même dimension (correspondant au 􏰀et􏰁 logique terme à terme).
+	public static boolean[][] multMatBool(boolean[][] M1,boolean[][] M2){
+		boolean[][] M3= new boolean[M1.length][M1[0].length];
+		for(int i=0;i<M1.length;i++){
+			for(int j=0;j< M1[0].length;j++){
+				if(M1[i][j]==true && M2[i][j]==true){
+					M3[i][j]=true;
+				}
+				else{
+					M3[i][j]=false;
+				}
+			}
+		}
+		return M3;
+	}
+	public static boolean[][] negatMat(boolean[][] M){
+		boolean[][] M1= new boolean[M.length][M[0].length];
+		for(int i=0;i<M1.length;i++){
+			for(int j=0;j< M1[0].length;j++){
+				M1[i][j]=!M[i][j];
+			}
+		}
+		return M1;
+	}
+
+	public static void main(String[] args) {
+		boolean[][] matrix1 = {
+				{true, true, false, false},
+				{false, true, true, false},
+				{false, false, true, true},
+				{true, false, false, true}
+		};
+		boolean[][] matrix2 = {
+				{true, false, true, true},
+				{true, false, false, true},
+				{true, true, false, false},
+				{false, true, false, false}
+		};
+		afficher(negatMat(matrix1));
 	}
 } // end class
