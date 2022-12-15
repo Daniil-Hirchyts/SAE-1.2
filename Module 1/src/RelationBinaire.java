@@ -17,7 +17,10 @@ public class RelationBinaire {
 	action : construit la relation binaire vide dans l'ensemble {0,1,2, ..., nb-1}
     */
     public RelationBinaire(int nb){
-
+        this.matAdj= new int[nb][nb];
+        this.m=0;
+        this.n=nb;
+    }
    }
  
      //______________________________________________

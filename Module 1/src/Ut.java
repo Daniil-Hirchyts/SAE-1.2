@@ -236,4 +236,18 @@ public class Ut {
     public static int majToIndex(char m){
 	return m-'A';
     }
+
+	// Pré-requis : matrices booléennes carrées de même dimension
+	// Résultat : Addition terme à terme de 2 matrices booléennes carrées de même dimension (correspondant au 􏰀ou􏰁 logique terme à terme)
+	public boolean[][] addMatBool(boolean[][] M1,boolean[][] M2){
+		boolean[][] M3= new boolean[M1.length][M1[0].length]
+		for(int i=0;i<M1.length;i++){
+			for(int j=0;j< M1[0].length;j++){
+				if(M1[i][j]==1 || M2[i][j]==1){
+					M3[i][j]=1;
+				}
+			}
+		}
+		return M3;
+	}
 } // end class
