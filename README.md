@@ -19,7 +19,7 @@ Il y a aussi les squelettes de code RelationBinaire.java,** **
 MainRelationBinaire.java, le fichier EE.class et le fichier Ut.java.
 
 Le fichier EE.java sera fourni plus tard: il contiendra les méthodes du** **
-TD8 et la méthode suivante:
+TD8 et la méthode suivante :
 
 public int retraitUnElt() {
      // Pre-requis : ensemble this est non vide
