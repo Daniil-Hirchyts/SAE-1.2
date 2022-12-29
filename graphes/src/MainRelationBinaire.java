@@ -10,8 +10,13 @@ public class MainRelationBinaire {
      * Hasse, fermeture transitive de Hasse et fermeture transitive de Hasse avec boucles (sous 2 formes aussi)
      */
     public static void main(String[] args) {
-
+        int nb;
+        double p;
+        do {
+            Ut.afficher("\nDonner le cardinal de E (>0) : ");
+            nb = Ut.saisirEntier();
+        }
+        while (nb <= 0);
     }
-
 
 } // fin MainRelationBinaire

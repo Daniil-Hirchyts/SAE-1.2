@@ -1,4 +1,3 @@
-
 public class RelationBinaire {
 
     // attributs
@@ -13,6 +12,7 @@ public class RelationBinaire {
     // constructeurs
 
     //______________________________________________
+
     /**
      * pré-requis : nb > 0
      * action : construit la relation binaire vide dans l'ensemble {0,1,2, ..., nb-1}
@@ -26,6 +26,7 @@ public class RelationBinaire {
     }
 
     //______________________________________________
+
     /**
      * pré-requis : nb > 0 et 0 <= p <= 1
      * action : construit une relation binaire aléatoire dans l'ensemble {0,1,2, ..., nb-1}
@@ -40,15 +41,6 @@ public class RelationBinaire {
                 if (Math.random() <= p) this.ajout(i, j);
     }
 
-    private void ajout(int i, int j) {
-        if (!this.matAdj[i][j]) {
-            this.matAdj[i][j] = true;
-            this.tabSucc[i].ajoutElt(j);
-            this.m++;
-        }
-    }
-
-    //______________________________________________
     /**
      * pré-requis : nb > 0
      * action : construit la relation binaire dans l'ensemble {0,1,2, ..., nb-1}
@@ -68,6 +60,7 @@ public class RelationBinaire {
     }
 
     //______________________________________________
+
     /**
      * pré-requis : mat est une matrice carrée de dimension > 0
      * action : construit une relation binaire dont la matrice d'adjacence
@@ -82,6 +75,7 @@ public class RelationBinaire {
     }
 
     //______________________________________________
+
     /**
      * pré-requis : tab.length > 0 et pour tout i, les éléments de tab[i]
      * sont compris entre 0 et tab.length-1
@@ -96,6 +90,7 @@ public class RelationBinaire {
     }
 
     //______________________________________________
+
     /**
      * pré-requis : aucun
      * action : construit une copie de r
@@ -107,12 +102,9 @@ public class RelationBinaire {
                 if (r.matAdj[i][j]) this.ajout(i, j);
     }
 
-
-    // méthodes
-
     //______________________________________________
+
     /**
-     * TODO : opBool(boolean[][] m1, boolean[][] m2, int numConnecteur)
      * pré-requis : m1 et m2 sont des matrices carrées de même dimension et 1 <= numConnecteur <= 5
      * résultat : la matrice obtenue en appliquant terme à terme le  connecteur de numéro numConnecteur
      * sur m1 si numConnecteur  = 3 (dans ce cas le paramètre m2 n'est pas utilisé),
@@ -121,41 +113,44 @@ public class RelationBinaire {
      */
     public static boolean[][] opBool(boolean[][] m1, boolean[][] m2, int numConnecteur) {
         boolean[][] res = new boolean[m1.length][m1.length];
-        if(numConnecteur==1){
-            for (int i = 0; i < m1.length; i++) {
-                for (int j = 0; j < m1.length; j++) {
+        if (numConnecteur == 1)
+            for (int i = 0; i < m1.length; i++)
+                for (int j = 0; j < m1.length; j++)
                     res[i][j] = m1[i][j] || m2[i][j];
-                }
-            }
-        }
-        else if(numConnecteur==2){
-            for (int i = 0; i < m1.length; i++) {
-                for (int j = 0; j < m1.length; j++) {
+        else if (numConnecteur == 2)
+            for (int i = 0; i < m1.length; i++)
+                for (int j = 0; j < m1.length; j++)
                     res[i][j] = m1[i][j] && m2[i][j];
-                }
-            }
-        }
-        else if(numConnecteur==3){
-            for (int i = 0; i < m1.length; i++) {
-                for (int j = 0; j < m1.length; j++) {
+        else if (numConnecteur == 3)
+            for (int i = 0; i < m1.length; i++)
+                for (int j = 0; j < m1.length; j++)
                     res[i][j] = !m1[i][j];
-                }
-            }
-        }
-        else if (numConnecteur==4){
-            for (int i = 0; i < m1.length; i++) {
-                for (int j = 0; j < m1.length; j++) {
+        else if (numConnecteur == 4)
+            for (int i = 0; i < m1.length; i++)
+                for (int j = 0; j < m1.length; j++)
                     res[i][j] = !m1[i][j] || m2[i][j];
-                }
-            }
-        }
-        else {
-            for (int i = 0; i < m1.length; i++) {
-                for (int j = 0; j < m1.length; j++) {
+        else if (numConnecteur == 5)
+            for (int i = 0; i < m1.length; i++)
+                for (int j = 0; j < m1.length; j++)
                     res[i][j] = m1[i][j] == m2[i][j];
-                }
-            }
-        }
+        return res;
+    }
+
+
+    // méthodes
+
+    //______________________________________________
+
+    /**
+     * pré-requis : m1 et m2 sont des matrices carrées de même dimension
+     * résultat : le produit matriciel de m1 et m2
+     */
+    public static boolean[][] produit(boolean[][] m1, boolean[][] m2) {
+        boolean[][] res = new boolean[m1.length][m1.length];
+        for (int i = 0; i < m1.length; i++)
+            for (int j = 0; j < m1.length; j++)
+                for (int k = 0; k < m1.length; k++)
+                    res[i][j] = res[i][j] || (m1[i][k] && m2[k][j]);
         return res;
     }
 
@@ -164,25 +159,6 @@ public class RelationBinaire {
 
     // A) Logique et calcul matriciel
     //-------------------------------
-
-    /**
-     * TODO : produit(boolean[][] m1, boolean[][] m2)
-     * pré-requis : m1 et m2 sont des matrices carrées de même dimension
-     * résultat : le produit matriciel de m1 et m2
-     */
-    public static boolean[][] produit(boolean[][] m1, boolean[][] m2) {
-        boolean[][] res = new boolean[m1.length][m1.length];
-        for (int i = 0; i < m1.length; i++) {
-            for (int j = 0; j < m1.length; j++) {
-                for (int k = 0; k < m1.length; k++) {
-                    res[i][j] = res[i][j] || (m1[i][k] && m2[k][j]);
-                }
-            }
-        }
-        return res;
-    }
-
-    //______________________________________________
 
     /**
      * TODO : transposee(boolean[][] m)
@@ -201,17 +177,13 @@ public class RelationBinaire {
 
     //______________________________________________
 
-    public static void main(String[] args) {
-        //je sais pas si faut le garde il y a pas de specifications pour le main
-        double p;
-        int nb=0;
-        while (nb <= 0) {
-            Ut.afficher("\nDonner le cardinal de E (>0) : ");
-            nb = Ut.saisirEntier();
+    private void ajout(int i, int j) {
+        if (!this.matAdj[i][j]) {
+            this.matAdj[i][j] = true;
+            this.tabSucc[i].ajoutElt(j);
+            this.m++;
         }
     }
-
-    //______________________________________________
 
 
     // B) Théorie des ensembles
