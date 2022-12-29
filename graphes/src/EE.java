@@ -105,7 +105,7 @@ public class EE {
     }
 
     /**
-     * @param et pre-requis : 0 <= i < this.cardinal
+     * pre-requis : 0 <= i < this.cardinal
      * @action enleve l'elt this.ensTab[i] de l'ensemble courant
      */
     private void retraitPratique(int i) {
@@ -190,7 +190,7 @@ public class EE {
     }
 
     /**
-     * @param f est un ensemble
+     * @param e est un ensemble
      * @return vrai si les ensembles ont le meme nombre d'elements et que tous
      * les elements sont egaux
      */
@@ -199,7 +199,7 @@ public class EE {
     }
 
     /**
-     * @param f est un ensemble
+     * @param e est un ensemble
      * @return vrai si l'objet courant est disjoint de e
      */
     public boolean estDisjoint(EE e) {
@@ -216,7 +216,7 @@ public class EE {
     }
 
     /**
-     * @param f est un ensemble
+     * @param e est un ensemble
      * @return un ensemble representant l'intersection entre l'objet courant et f
      */
     public EE intersection(EE e) {
