@@ -96,7 +96,7 @@ public class RelationBinaire {
         this(mat.length);
         for (int i = 0; i < mat.length; i++) {
             for (int j = 0; j < mat.length; j++) {
-                if (mat[i][j]) {
+                if (mat[i][j]){
                     this.ajout(i, j);
                 }
             }
@@ -161,40 +161,38 @@ public class RelationBinaire {
      */
     public static boolean[][] opBool(boolean[][] m1, boolean[][] m2, int numConnecteur) {
         boolean[][] res = new boolean[m1.length][m1.length];
-        switch (numConnecteur) {
-            case 1 -> {
-                for (int i = 0; i < m1.length; i++) {
-                    for (int j = 0; j < m1.length; j++) {
-                        res[i][j] = m1[i][j] || m2[i][j];
-                    }
+        if(numConnecteur==1){
+            for (int i = 0; i < m1.length; i++) {
+                for (int j = 0; j < m1.length; j++) {
+                    res[i][j] = m1[i][j] || m2[i][j];
                 }
             }
-            case 2 -> {
-                for (int i = 0; i < m1.length; i++) {
-                    for (int j = 0; j < m1.length; j++) {
-                        res[i][j] = m1[i][j] && m2[i][j];
-                    }
+        }
+        else if(numConnecteur==2){
+            for (int i = 0; i < m1.length; i++) {
+                for (int j = 0; j < m1.length; j++) {
+                    res[i][j] = m1[i][j] && m2[i][j];
                 }
             }
-            case 3 -> {
-                for (int i = 0; i < m1.length; i++) {
-                    for (int j = 0; j < m1.length; j++) {
-                        res[i][j] = !m1[i][j];
-                    }
+        }
+        else if(numConnecteur==3){
+            for (int i = 0; i < m1.length; i++) {
+                for (int j = 0; j < m1.length; j++) {
+                    res[i][j] = !m1[i][j];
                 }
             }
-            case 4 -> {
-                for (int i = 0; i < m1.length; i++) {
-                    for (int j = 0; j < m1.length; j++) {
-                        res[i][j] = !m1[i][j] || m2[i][j];
-                    }
+        }
+        else if (numConnecteur==4){
+            for (int i = 0; i < m1.length; i++) {
+                for (int j = 0; j < m1.length; j++) {
+                    res[i][j] = !m1[i][j] || m2[i][j];
                 }
             }
-            case 5 -> {
-                for (int i = 0; i < m1.length; i++) {
-                    for (int j = 0; j < m1.length; j++) {
-                        res[i][j] = m1[i][j] == m2[i][j];
-                    }
+        }
+        else {
+            for (int i = 0; i < m1.length; i++) {
+                for (int j = 0; j < m1.length; j++) {
+                    res[i][j] = m1[i][j] == m2[i][j];
                 }
             }
         }
