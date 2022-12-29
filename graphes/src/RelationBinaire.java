@@ -1,3 +1,4 @@
+
 public class RelationBinaire {
 
     // attributs
@@ -11,8 +12,8 @@ public class RelationBinaire {
 
     // constructeurs
 
+    //______________________________________________
     /**
-     * TODO : RelationBinaire(int nb)
      * pré-requis : nb > 0
      * action : construit la relation binaire vide dans l'ensemble {0,1,2, ..., nb-1}
      */
@@ -21,16 +22,11 @@ public class RelationBinaire {
         this.matAdj = new boolean[nb][nb];
         this.m = 0;
         this.tabSucc = new EE[nb];
-        for (int i = 0; i < nb; i++) {
-            this.tabSucc[i] = new EE(nb);
-        }
+        for (int i = 0; i < nb; i++) this.tabSucc[i] = new EE(nb);
     }
 
     //______________________________________________
-
-
     /**
-     * TODO : RelationBinaire(int nb, double p)
      * pré-requis : nb > 0 et 0 <= p <= 1
      * action : construit une relation binaire aléatoire dans l'ensemble {0,1,2, ..., nb-1}
      * à laquelle chaque couple a la probabilité p d'appartenir.
@@ -39,28 +35,21 @@ public class RelationBinaire {
      */
     public RelationBinaire(int nb, double p) {
         this(nb);
-        for (int i = 0; i < nb; i++) {
-            for (int j = 0; j < nb; j++) {
-                if (Math.random() <= p) {
-                    this.ajout(i, j);
-                }
-            }
-        }
+        for (int i = 0; i < nb; i++)
+            for (int j = 0; j < nb; j++)
+                if (Math.random() <= p) this.ajout(i, j);
     }
 
     private void ajout(int i, int j) {
         if (!this.matAdj[i][j]) {
             this.matAdj[i][j] = true;
-            this.tabSucc[i].ajoutPratique(j);
+            this.tabSucc[i].ajoutElt(j);
             this.m++;
         }
     }
 
     //______________________________________________
-
-
     /**
-     * TODO : RelationBinaire(int nb, boolean egal)
      * pré-requis : nb > 0
      * action : construit la relation binaire dans l'ensemble {0,1,2, ..., nb-1}
      * '=' si egal a la valeur vrai et '<=' sinon
@@ -68,25 +57,18 @@ public class RelationBinaire {
     public RelationBinaire(int nb, boolean egal) {
         this(nb);
         if (egal) {
-            for (int i = 0; i < nb; i++) {
-                for (int j = i; j < nb; j++) {
-                    this.ajout(i, j);
-                }
-            }
+            for (int i = 0; i < nb; i++)
+                for (int j = 0; j < nb; j++)
+                    if (i == j) this.ajout(i, j);
         } else {
-            for (int i = 0; i < nb; i++) {
-                for (int j = 0; j <= i; j++) {
-                    this.ajout(i, j);
-                }
-            }
+            for (int i = 0; i < nb; i++)
+                for (int j = 0; j < nb; j++)
+                    if (i <= j) this.ajout(i, j);
         }
     }
 
     //______________________________________________
-
-
     /**
-     * TODO : RelationBinaire(boolean[][] mat)
      * pré-requis : mat est une matrice carrée de dimension > 0
      * action : construit une relation binaire dont la matrice d'adjacence
      * est une copie de mat
@@ -94,20 +76,13 @@ public class RelationBinaire {
      */
     public RelationBinaire(boolean[][] mat) {
         this(mat.length);
-        for (int i = 0; i < mat.length; i++) {
-            for (int j = 0; j < mat.length; j++) {
-                if (mat[i][j]){
-                    this.ajout(i, j);
-                }
-            }
-        }
+        for (int i = 0; i < mat.length; i++)
+            for (int j = 0; j < mat.length; j++)
+                if (mat[i][j]) this.ajout(i, j);
     }
 
     //______________________________________________
-
-
     /**
-     * TODO : RelationBinaire(EE[] tab)
      * pré-requis : tab.length > 0 et pour tout i, les éléments de tab[i]
      * sont compris entre 0 et tab.length-1
      * action : construit une relation binaire dont le tableau des ensembles de successeurs
@@ -115,42 +90,27 @@ public class RelationBinaire {
      */
     public RelationBinaire(EE[] tab) {
         this(tab.length);
-        for (int i = 0; i < tab.length; i++) {
-            for (int j = 0; j < tab.length; j++) {
-                if (tab[i].contient(j)) {
-                    this.ajout(i, j);
-                }
-            }
-        }
-
+        for (int i = 0; i < tab.length; i++)
+            for (int j = 0; j < tab.length; j++)
+                if (tab[i].contient(j)) this.ajout(i, j);
     }
 
     //______________________________________________
-
-
     /**
-     * TODO : RelationBinaire(RelationBinaire r)
      * pré-requis : aucun
      * action : construit une copie de r
      */
     public RelationBinaire(RelationBinaire r) {
         this(r.n);
-        for (int i = 0; i < r.n; i++) {
-            for (int j = 0; j < r.n; j++) {
-                if (r.matAdj[i][j]) {
-                    this.ajout(i, j);
-                }
-            }
-        }
-
+        for (int i = 0; i < r.n; i++)
+            for (int j = 0; j < r.n; j++)
+                if (r.matAdj[i][j]) this.ajout(i, j);
     }
-
-
-    //______________________________________________
 
 
     // méthodes
 
+    //______________________________________________
     /**
      * TODO : opBool(boolean[][] m1, boolean[][] m2, int numConnecteur)
      * pré-requis : m1 et m2 sont des matrices carrées de même dimension et 1 <= numConnecteur <= 5
