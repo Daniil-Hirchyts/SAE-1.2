@@ -242,14 +242,13 @@ public class RelationBinaire {
     //______________________________________________
 
     public static void main(String[] args) {
-
-        int nb;
+        //je sais pas si faut le garde il y a pas de specifications pour le main
         double p;
-        do {
+        int nb=0;
+        while (nb <= 0) {
             Ut.afficher("\nDonner le cardinal de E (>0) : ");
             nb = Ut.saisirEntier();
         }
-        while (nb <= 0);
     }
 
     //______________________________________________
