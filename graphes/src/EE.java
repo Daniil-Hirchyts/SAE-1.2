@@ -284,4 +284,12 @@ public class EE {
         }
         return ens;
     }
+    public EE descendant(int x){
+        int [] tab=new tab[x+1];
+        for(int i=0;i<=x;x--){
+            tab[i]=x;
+        }
+        EE res=new EE(tab,x+1);
+        return res;
+    }
 }
