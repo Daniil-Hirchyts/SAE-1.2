@@ -285,11 +285,20 @@ public class EE {
         return ens;
     }
     public EE descendant(int x){
-        int [] tab=new tab[x+1];
-        for(int i=0;i<=x;x--){
-            tab[i]=x;
+        int [] tab=new int[x+1];
+        int y=x;
+        for(int i=0;i<=y;y--){
+            tab[i]=y;
+            tab[x-i]=i;
+            i++;
         }
         EE res=new EE(tab,x+1);
         return res;
+    }
+
+    public static void main(String[] args) {
+        EE f=new EE(10);
+        System.out.println(f.descendant(10));
+
     }
 }
