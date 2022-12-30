@@ -87,11 +87,6 @@ public class Ut {
             sautLigne();
         }
     }
-    public static void afficher(int[] mat) {
-        for (int i = 0; i < mat.length; i++) {
-            System.out.print(mat[i]+" ");
-        }
-    }
 
     public static void afficherSL(int[][] mat) {
         afficher(mat);
