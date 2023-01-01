@@ -1,0 +1,53 @@
+
+public class GraphVisualizationExample extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+        Group root = new Group();
+
+        // Création de quelques noeuds et relations aléatoires
+        List<Circle> nodes = new ArrayList<>();
+        List<Line> relations = new ArrayList<>();
+        List<Polygon> arrows = new ArrayList<>();
+
+
+
+        for (int i = 0; i < 5; i++) {
+            Circle node = new Circle(random.nextInt(500), random.nextInt(500), 30);
+
+            node.setFill(Color.color(random.nextDouble(), random.nextDouble(), random.nextDouble()));
+
+            nodes.add(node);
+            Text label = new Text(Integer.toString(i + 1));
+            label.setLayoutX(node.getCenterX() - 10);
+            label.setLayoutY(node.getCenterY() + 5);
+            for (int j = 0; j < 5; j++) {
+                if (random.nextBoolean()) {
+                    Line relation = new Line(node.getCenterX(), node.getCenterY(), nodes.get(j).getCenterX(), nodes.get(j).getCenterY());
+                    relation.setStrokeWidth(3);
+                    relations.add(relation);
+                    Polygon arrow = new Polygon();
+                    arrow.getPoints().addAll(0.0, 0.0,
+                            -5.0, -5.0,
+                            -5.0, 5.0);
+                    arrow.setFill(Color.BLACK);
+                    arrow.setTranslateX(nodes.get(j).getCenterX());
+                    arrow.setTranslateY(nodes.get(j).getCenterY());
+                    arrows.add(arrow);
+                }
+            }
+        }
+
+        root.getChildren().addAll(nodes);
+        root.getChildren().addAll(relations);
+        root.getChildren().addAll(arrows);
+
+        Scene scene = new Scene(root, 500, 500);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+}
