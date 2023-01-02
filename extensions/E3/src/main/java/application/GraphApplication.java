@@ -1,4 +1,4 @@
-package com.example.e3;
+package application;
 
 import javafx.application.Application;
 import javafx.stage.Stage;

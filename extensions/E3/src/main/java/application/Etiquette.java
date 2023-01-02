@@ -1,4 +1,4 @@
-package com.example.e3;
+package application;
 
 import javafx.scene.control.Label;
 
@@ -25,6 +25,5 @@ public class Etiquette {
         etiquette.setLayoutX(x - 5);
         etiquette.setLayoutY(y - 7);
     }
-
 
 }

@@ -1,9 +1,9 @@
-module com.example.e3 {
+module application {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
 
 
-    opens com.example.e3 to javafx.fxml;
-    exports com.example.e3;
+    exports application;
+    opens application to javafx.fxml;
 }

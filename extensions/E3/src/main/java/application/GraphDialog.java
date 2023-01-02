@@ -1,7 +1,6 @@
-package com.example.e3;
+package application;
 
 import javafx.scene.control.TextInputDialog;
-
 import java.util.Optional;
 
 public class GraphDialog {

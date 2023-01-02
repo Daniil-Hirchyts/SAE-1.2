@@ -1,4 +1,4 @@
-package com.example.e3;
+package application;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -14,8 +14,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class MatrixDialog{
+public class MatrixDialog {
     public static int numElements;
+
     public static void show(Stage primaryStage) {
 
         numElements = GraphDialog.show();
@@ -29,7 +30,9 @@ public class MatrixDialog{
             column.setStyle("-fx-alignment: CENTER;");
             column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(index)).asString());
             column.setCellFactory(TextFieldTableCell.forTableColumn());
-            column.setOnEditCommit(event -> { event.getTableView().getItems().get(event.getTablePosition().getRow()).set(event.getTablePosition().getColumn(), event.getNewValue()); });
+            column.setOnEditCommit(event -> {
+                event.getTableView().getItems().get(event.getTablePosition().getRow()).set(event.getTablePosition().getColumn(), event.getNewValue());
+            });
             table.getColumns().add(column);
         }
 
@@ -51,12 +54,23 @@ public class MatrixDialog{
         validateButton.setOnAction(event -> {
             int[][] matrix = new int[numElements][numElements];
             for (int i = 0; i < numElements; i++)
-                for (int j = 0; j < numElements; j++) matrix[i][j] = Integer.parseInt(table.getItems().get(i).get(j).toString());
+                for (int j = 0; j < numElements; j++)
+                    matrix[i][j] = Integer.parseInt(table.getItems().get(i).get(j).toString());
             GraphView.show(primaryStage, matrix);
             event.consume();
         });
 
         Button cancelButton = new Button("Reinitialiser");
+
+        cancelButton.setOnAction(event -> {
+            table.getItems().clear();
+            for (int i = 0; i < numElements; i++) {
+                ObservableList row = FXCollections.observableArrayList();
+                for (int j = 0; j < numElements; j++) row.add("0");
+                table.getItems().add(row);
+            }
+            event.consume();
+        });
 
         HBox hBox = new HBox(cancelButton, validateButton);
         hBox.setSpacing(10);

@@ -1,4 +1,4 @@
-package com.example.e3;
+package application;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
@@ -24,7 +24,8 @@ public class Graph {
     }
 
     public void createGraph(Random random, Noeud[] nodes, Etiquette[] etiquettes, Relation[] relations, Fleche[] fleches, Cycle[] cycles) {
-        int tempCountCycles = 0, tempCountRelations = 0;
+        int tempCountCycles = 0;
+        int tempCountRelations = 0;
         for (int i = 0; i < nodes.length; i++) {
             nodes[i] = new Noeud(new Circle(), random.nextInt(500) + 50, random.nextInt(500) + 50);
             Label label = new Label("" + (i + 1));
@@ -34,7 +35,7 @@ public class Graph {
             for (int j = 0; j < matrix.length; j++) {
                 if (matrix[i][j] == 1 && i != j) {
                     relations[tempCountRelations] = new Relation(nodes[i].getCircle(), nodes[j].getCircle());
-                    fleches[tempCountRelations] = new Fleche(relations[i].getNode1(), relations[i].getNode2());
+                    fleches[tempCountRelations] = new Fleche(relations[tempCountRelations].getNode1(), relations[tempCountRelations].getNode2());
                     tempCountRelations++;
                 }
             }

@@ -1,4 +1,4 @@
-package com.example.e3;
+package application;
 
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
@@ -49,20 +49,15 @@ public class GraphView {
         fleches = new Fleche[nbRelation];
         cycles = new Cycle[nbCycle];
 
-        System.out.println("nbNodes = " + nbNodes);
-        System.out.println("nbRelation = " + nbRelation);
-        System.out.println("nbCycle = " + nbCycle);
-
         Graph graph = new Graph(nodes, etiquettes, relations, fleches, cycles, matrix);
         graph.createGraph(random, nodes, etiquettes, relations, fleches, cycles);
         graph.addToRoot(root, nodes, etiquettes, relations, fleches, cycles);
 
         Menu modifierMenu = new Menu("Graphe");
         MenuItem save = new MenuItem("Sauvegarder");
-        MenuItem ajouterNoeud = new MenuItem("Recréer le graphe");
         MenuItem reinitialiserMenuItem = new MenuItem("Réinitialiser la position");
         MenuItem couleurMenuItem = new MenuItem("Changer les couleurs");
-        modifierMenu.getItems().addAll(save, ajouterNoeud, reinitialiserMenuItem, couleurMenuItem);
+        modifierMenu.getItems().addAll(save, reinitialiserMenuItem, couleurMenuItem);
 
         Menu applicationMenu = new Menu("Application");
         MenuItem quitterMenuItem = new MenuItem("Quitter");
@@ -78,22 +73,35 @@ public class GraphView {
                 e.printStackTrace();
             }
         });
-
-        ajouterNoeud.setOnAction(e -> {
-            MatrixDialog.show(primaryStage);
-        });
-
         reinitialiserMenuItem.setOnAction(event -> {
             updatePositionGraphe(root, random, nodes, etiquettes, relations, fleches, cycles);
         });
         quitterMenuItem.setOnAction(event -> {
-            primaryStage.close();
+            System.exit(0);
         });
         couleurMenuItem.setOnAction(event -> {
             for (Noeud node : nodes) node.updateColor();
         });
 
-        style();
+        root.setPrefSize(600, 600);
+        for (int i = 0; i < nodes.length; i++) {
+            int finalI = i;
+            nodes[i].getCircle().setOnMouseEntered(event -> {
+                nodes[finalI].getCircle().setCursor(javafx.scene.Cursor.OPEN_HAND);
+            });
+            nodes[i].getCircle().setOnMouseDragged(event -> {
+                nodes[finalI].getCircle().setCursor(javafx.scene.Cursor.CLOSED_HAND);
+                nodes[finalI].updatePosition(event.getX(), event.getY());
+                etiquettes[finalI].updatePosition(nodes[finalI].getX(), nodes[finalI].getY());
+                for (int j = 0; j < relations.length; j++) {
+                    relations[j].updatePosition();
+                    fleches[j].updatePosition();
+                }
+                for (Cycle cycle : cycles) cycle.updatePosition();
+            });
+        }
+
+        menuBar.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
 
         vBox.getChildren().addAll(menuBar);
         mainBox.getChildren().addAll(vBox, root);
@@ -115,27 +123,5 @@ public class GraphView {
         for (Cycle cycle : cycles) cycle.updatePosition();
     }
 
-    public static void style() {
-        root.setPrefSize(600, 600);
-        for (int i = 0; i < nodes.length; i++) {
-            int finalI = i;
-            nodes[i].getCircle().setOnMouseEntered(event -> { nodes[finalI].getCircle().setCursor(javafx.scene.Cursor.OPEN_HAND); });
-            nodes[i].getCircle().setOnMouseDragged(event -> {
-                nodes[finalI].getCircle().setCursor(javafx.scene.Cursor.CLOSED_HAND);
-                nodes[finalI].updatePosition(event.getX(), event.getY());
-                etiquettes[finalI].updatePosition(nodes[finalI].getX(), nodes[finalI].getY());
-                for (int j = 0; j < relations.length; j++) {
-                    relations[j].updatePosition();
-                    fleches[j].updatePosition();
-                }
-                for (Cycle cycle : cycles) cycle.updatePosition();
-            });
-        }
-
-        menuBar.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
-    }
-    public void stop() {
-        System.exit(0);
-    }
 }
 
