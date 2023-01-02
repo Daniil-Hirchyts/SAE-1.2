@@ -59,10 +59,9 @@ public class Graph {
             root.getChildren().add(relations[i].getRelation());
             root.getChildren().add(fleches[i].getFleche());
         }
-        for (int i = 0; i < cycles.length; i++) {
-            root.getChildren().add(cycles[i].getCycle());
-            root.getChildren().add(cycles[i].getFlecheCycle());
+        for (Cycle cycle : cycles) {
+            root.getChildren().add(cycle.getCycle());
+            root.getChildren().add(cycle.getFlecheCycle());
         }
     }
-
 }

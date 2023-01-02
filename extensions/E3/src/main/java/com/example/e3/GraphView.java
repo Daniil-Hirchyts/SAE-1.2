@@ -1,6 +1,5 @@
 package com.example.e3;
 
-import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -16,7 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
-public class GraphView extends Application {
+public class GraphView {
 
     public static int nbRelation;
     public static int nbNodes;
@@ -33,9 +32,7 @@ public class GraphView extends Application {
     private VBox dialogBox = new VBox();
 
     public static void show(Stage primaryStage, int[][] matrix) {
-
         nbNodes = matrix.length;
-
         int nbRelationT = 0;
         int nbCycle = 0;
         for (int i = 0; i < nbNodes; i++) {
@@ -102,7 +99,7 @@ public class GraphView extends Application {
         mainBox.getChildren().addAll(vBox, root);
 
         primaryStage.setScene(new Scene(mainBox));
-        primaryStage.setTitle("Graph Application");
+        primaryStage.setTitle("Graphes - Application");
         primaryStage.show();
     }
 
@@ -115,18 +112,14 @@ public class GraphView extends Application {
             relations[i].updatePosition();
             fleches[i].updatePosition();
         }
-        for (int i = 0; i < cycles.length; i++) {
-            cycles[i].updatePosition();
-        }
+        for (Cycle cycle : cycles) cycle.updatePosition();
     }
 
     public static void style() {
         root.setPrefSize(600, 600);
         for (int i = 0; i < nodes.length; i++) {
             int finalI = i;
-            nodes[i].getCircle().setOnMouseEntered(event -> {
-                nodes[finalI].getCircle().setCursor(javafx.scene.Cursor.OPEN_HAND);
-            });
+            nodes[i].getCircle().setOnMouseEntered(event -> { nodes[finalI].getCircle().setCursor(javafx.scene.Cursor.OPEN_HAND); });
             nodes[i].getCircle().setOnMouseDragged(event -> {
                 nodes[finalI].getCircle().setCursor(javafx.scene.Cursor.CLOSED_HAND);
                 nodes[finalI].updatePosition(event.getX(), event.getY());
@@ -141,13 +134,8 @@ public class GraphView extends Application {
 
         menuBar.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
     }
-
     public void stop() {
         System.exit(0);
-    }
-
-    @Override
-    public void start(Stage secondStage) {
     }
 }
 

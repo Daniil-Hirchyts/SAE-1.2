@@ -19,14 +19,6 @@ public class Etiquette {
         return etiquette;
     }
 
-    public double getX() {
-        return x;
-    }
-
-    public double getY() {
-        return y;
-    }
-
     public void updatePosition(double x, double y) {
         this.x = x;
         this.y = y;

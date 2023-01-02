@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/SAE-1.2.iml" filepath="$PROJECT_DIR$/.idea/SAE-1.2.iml" />
       <module fileurl="file://$PROJECT_DIR$/extensions/extensions.iml" filepath="$PROJECT_DIR$/extensions/extensions.iml" />
       <module fileurl="file://$PROJECT_DIR$/graphes/graphes.iml" filepath="$PROJECT_DIR$/graphes/graphes.iml" />
-      <module fileurl="file://$PROJECT_DIR$/extensions/demo/graphique.iml" filepath="$PROJECT_DIR$/extensions/demo/graphique.iml" />
     </modules>
   </component>
 </project>

@@ -46,8 +46,4 @@ public class Noeud {
     public void updateColor() {
         circle.setFill(Color.rgb(random.nextInt(155) + 100, random.nextInt(155) + 100, random.nextInt(155) + 100));
     }
-
-    public void updateRadius(int i) {
-        circle.setRadius(i);
-    }
 }

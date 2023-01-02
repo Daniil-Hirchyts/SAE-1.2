@@ -30,14 +30,6 @@ public class Fleche {
         double[] coordinates = calculateCoordinates(parametres1, parametres2, angle);
         fleche.setTranslateX(coordinates[2]);
         fleche.setTranslateY(coordinates[3]);
-        System.out.println("Fleche est cree");
-//        if (parametres1[0] <= parametres2[0]) {
-//
-//        }
-//        else {
-//            fleche.setTranslateX(coordinates[0]);
-//            fleche.setTranslateY(coordinates[1]);
-//        }
         fleche.setRotate(Math.toDegrees(angle));
     }
 
@@ -52,14 +44,6 @@ public class Fleche {
         double[] coordinates = calculateCoordinates(parametres1, parametres2, angle);
         fleche.setTranslateX(coordinates[2]);
         fleche.setTranslateY(coordinates[3]);
-//        if (parametres1[0] <= parametres2[0]) {
-//            fleche.setTranslateX(coordinates[2]);
-//            fleche.setTranslateY(coordinates[3]);
-//        }
-//        else {
-//            fleche.setTranslateX(coordinates[0]);
-//            fleche.setTranslateY(coordinates[1]);
-//        }
         fleche.setRotate(Math.toDegrees(angle));
     }
 }

@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="E3" />
-        <module name="graphique" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

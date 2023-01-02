@@ -3,7 +3,6 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/extensions/demo/pom.xml" />
         <option value="$PROJECT_DIR$/extensions/E3/pom.xml" />
       </list>
     </option>

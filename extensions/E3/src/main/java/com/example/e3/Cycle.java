@@ -42,9 +42,7 @@ public class Cycle {
         return cycle;
     }
 
-    public Polygon getFlecheCycle() {
-        return flecheCycle;
-    }
+    public Polygon getFlecheCycle() { return flecheCycle; }
 
     public void updatePosition() {
         cycle.setCenterX(node.getCenterX());
