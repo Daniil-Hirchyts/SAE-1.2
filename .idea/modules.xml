@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/extensions/E3/E3.iml" filepath="$PROJECT_DIR$/extensions/E3/E3.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Extension-3/Extension-3.iml" filepath="$PROJECT_DIR$/Extension-3/Extension-3.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SAE-1.2.iml" filepath="$PROJECT_DIR$/.idea/SAE-1.2.iml" />
       <module fileurl="file://$PROJECT_DIR$/extensions/extensions.iml" filepath="$PROJECT_DIR$/extensions/extensions.iml" />
       <module fileurl="file://$PROJECT_DIR$/graphes/graphes.iml" filepath="$PROJECT_DIR$/graphes/graphes.iml" />
