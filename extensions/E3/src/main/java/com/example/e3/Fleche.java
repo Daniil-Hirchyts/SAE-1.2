@@ -28,30 +28,38 @@ public class Fleche {
         double[] parametres2 = getNodeParametres(node2);
         double angle = calculateAngle(parametres1, parametres2);
         double[] coordinates = calculateCoordinates(parametres1, parametres2, angle);
-        if (parametres1[0] < parametres2[0]) {
-            fleche.setTranslateX(coordinates[2]);
-            fleche.setTranslateY(coordinates[3]);
-        } else {
-            fleche.setTranslateX(coordinates[0]);
-            fleche.setTranslateY(coordinates[1]);
-        }
+        fleche.setTranslateX(coordinates[2]);
+        fleche.setTranslateY(coordinates[3]);
+        System.out.println("Fleche est cree");
+//        if (parametres1[0] <= parametres2[0]) {
+//
+//        }
+//        else {
+//            fleche.setTranslateX(coordinates[0]);
+//            fleche.setTranslateY(coordinates[1]);
+//        }
         fleche.setRotate(Math.toDegrees(angle));
     }
 
-    public Polygon getFleche() { return fleche; }
+    public Polygon getFleche() {
+        return fleche;
+    }
 
     public void updatePosition() {
         double[] parametres1 = getNodeParametres(node1);
         double[] parametres2 = getNodeParametres(node2);
         double angle = calculateAngle(parametres1, parametres2);
         double[] coordinates = calculateCoordinates(parametres1, parametres2, angle);
-        if (parametres1[0] < parametres2[0]) {
-            fleche.setTranslateX(coordinates[2]);
-            fleche.setTranslateY(coordinates[3]);
-        } else {
-            fleche.setTranslateX(coordinates[0]);
-            fleche.setTranslateY(coordinates[1]);
-        }
+        fleche.setTranslateX(coordinates[2]);
+        fleche.setTranslateY(coordinates[3]);
+//        if (parametres1[0] <= parametres2[0]) {
+//            fleche.setTranslateX(coordinates[2]);
+//            fleche.setTranslateY(coordinates[3]);
+//        }
+//        else {
+//            fleche.setTranslateX(coordinates[0]);
+//            fleche.setTranslateY(coordinates[1]);
+//        }
         fleche.setRotate(Math.toDegrees(angle));
     }
 }

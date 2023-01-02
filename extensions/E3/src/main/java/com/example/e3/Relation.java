@@ -26,10 +26,18 @@ public class Relation {
         double[] parametres2 = getNodeParametres(node2);
         double angle = calculateAngle(parametres1, parametres2);
         double[] coordinates = calculateCoordinates(parametres1, parametres2, angle);
-        relation.setStartX(coordinates[0]);
-        relation.setStartY(coordinates[1]);
-        relation.setEndX(coordinates[2]);
-        relation.setEndY(coordinates[3]);
+        if (parametres1[0] <= parametres2[0]) {
+            relation.setStartX(coordinates[0]);
+            relation.setStartY(coordinates[1]);
+            relation.setEndX(coordinates[2]);
+            relation.setEndY(coordinates[3]);
+        }
+        else {
+            relation.setStartX(coordinates[2]);
+            relation.setStartY(coordinates[3]);
+            relation.setEndX(coordinates[0]);
+            relation.setEndY(coordinates[1]);
+        }
     }
 
     public Line getRelation() {
@@ -49,10 +57,18 @@ public class Relation {
         double[] parametres2 = getNodeParametres(node2);
         double angle = calculateAngle(parametres1, parametres2);
         double[] coordinates = calculateCoordinates(parametres1, parametres2, angle);
-        relation.setStartX(coordinates[0]);
-        relation.setStartY(coordinates[1]);
-        relation.setEndX(coordinates[2]);
-        relation.setEndY(coordinates[3]);
+        if (parametres1[0] <= parametres2[0]) {
+            relation.setStartX(coordinates[0]);
+            relation.setStartY(coordinates[1]);
+            relation.setEndX(coordinates[2]);
+            relation.setEndY(coordinates[3]);
+        }
+        else {
+            relation.setStartX(coordinates[2]);
+            relation.setStartY(coordinates[3]);
+            relation.setEndX(coordinates[0]);
+            relation.setEndY(coordinates[1]);
+        }
     }
 
 }

@@ -33,4 +33,6 @@ public class Etiquette {
         etiquette.setLayoutX(x - 5);
         etiquette.setLayoutY(y - 7);
     }
+
+
 }

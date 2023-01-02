@@ -1,7 +1,0 @@
-        // Création des labels pour chaque noeud
-//        Text label1 = new Text("1");
-//        label1.setTranslateX(45);
-//        label1.setTranslateY(55);
-//        Text label2 = new Text("2");
-//        label2.setTranslateX(145);
-//        label2.setTranslateY(55);
