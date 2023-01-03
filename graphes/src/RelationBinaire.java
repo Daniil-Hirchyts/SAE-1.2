@@ -228,21 +228,14 @@ public class RelationBinaire {
     public void ajouteCouple(int x, int y) {
         if (!this.matAdj[x][y]) {
             this.matAdj[x][y] = true;
-            this.tabSucc[x].ajoutElt(y);
             this.m++;
         }
     }
 
     //______________________________________________
-
-    /**
-     * pré-requis : 0 <= x < this.n et 0 <= y < this.n
-     * résultat : enlève (x,y) de this s'il y est
-     */
     public void enleveCouple(int x, int y) {
-        if (this.matAdj[x][y]) {
-            this.matAdj[x][y] = false;
-            this.tabSucc[x].enleveElt(y);
+        if (!this.matAdj[x][y]) {
+            this.matAdj[x][y] = true;
             this.m--;
         }
     }

@@ -163,12 +163,6 @@ public class EE {
         return this.ensTab[this.cardinal];
     }
 
-    public void enleveElt(int y) {
-        int i = 0;
-        while (i < this.cardinal && this.ensTab[i] != y) i++;
-        if (i < this.cardinal) this.retraitPratique(i);
-    }
-
     public int retraitEltAleatoirement() {
         // Pre-requis : ensemble this est non vide
         // Resultat/action : enleve un element de this (aleatoirement)
