@@ -32,5 +32,7 @@ public class MainRelationBinaire {
             System.out.println("R" + i + " : ");
             tab[i].afficheDivers();
         }
+
+        System.out.println("Test booleanverifCNordre : " + RelationBinaire.booleanverifCNordre(10000,50));
     }
 } // fin MainRelationBinaire

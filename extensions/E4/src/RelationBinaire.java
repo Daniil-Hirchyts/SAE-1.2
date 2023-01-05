@@ -185,7 +185,7 @@ public class RelationBinaire {
     }
 
     // B) Théorie des ensembles
-    //--------------------------
+    //______________________________________________
 
     /**
      * pré-requis : aucun
@@ -245,8 +245,6 @@ public class RelationBinaire {
         return matAdj[x][y];
     }
 
-    //______________________________________________
-
     /**
      * pré-requis : 0 <= x < this.n et 0 <= y < this.n
      * résultat : ajoute (x,y) à this s'il n'y est pas déjà
@@ -257,6 +255,7 @@ public class RelationBinaire {
             this.m++;
         }
     }
+    //______________________________________________
 
     //______________________________________________
     public void enleveCouple(int x, int y) {
@@ -265,6 +264,7 @@ public class RelationBinaire {
             this.m--;
         }
     }
+
     //______________________________________________
 
     /**
@@ -354,7 +354,8 @@ public class RelationBinaire {
         return res;
     }
 
-    //______________________________________________
+    // C) Théorie des graphes orientés
+    //---------------------------------
 
     /**
      * pré-requis : this.n = r.n
@@ -367,8 +368,7 @@ public class RelationBinaire {
         return true;
     }
 
-    // C) Théorie des graphes orientés
-    //---------------------------------
+    //______________________________________________
 
     /**
      * pré-requis : this.n = r.n
@@ -381,7 +381,8 @@ public class RelationBinaire {
         return true;
     }
 
-    //______________________________________________
+    // D) Relation binaire
+    //---------------------
 
     /**
      * pré-requis : 0 <= x < this.n
@@ -394,8 +395,7 @@ public class RelationBinaire {
         return res;
     }
 
-    // D) Relation binaire
-    //---------------------
+    //______________________________________________
 
     /**
      * pré-requis : 0 <= x < this.n
@@ -513,8 +513,6 @@ public class RelationBinaire {
         return res;
     }
 
-    //______________________________________________
-
     /**
      * pré-requis : aucun
      * action : affiche this sous 2 formes (matrice et ensemble de couples), puis affiche ses propriétés
@@ -536,31 +534,26 @@ public class RelationBinaire {
         RelationBinaire ferTransHasseBoucles = ferTransHasse.ferTrans();
         System.out.println("fermeture transitive de Hasse de this avec boucles = " + ferTransHasseBoucles);
     }
-//        public static boolean booleanverifCNordre(int nbRel,int cardMax){
-//        double alea=Math.random();
-//        for(int i=0;i<nbRel;i++){
-//            RelationBinaire R=new RelationBinaire(cardMax,alea);
-//            RelationBinaire ferT= R.hasse().ferTrans().ferTrans();
-//            boolean result=true;
-//            if (R.matAdj.length != ferT.matAdj.length) {
-//                result= false;
-//            } else {
-//                for (int i= 0; i< R.matAdj.length; i++) {
-//                    if (R.matAdj[i].length != ferT[i].length) {
-//                        result= false;
-//                    } else {
-//                        for (int j=0; j< R.matAdj[i].length; j++) {
-//                            if (R.matAdj[i][j] != ferT.matAdj[i][j]) {
-//                                result= false
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//            if(R.estRelOrdre() && !result){
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
+
+    public static boolean booleanverifCNordre(int nbRel, int cardMax) {
+        double alea = Math.random();
+        for (int g = 0; g < nbRel; g++) {
+            RelationBinaire R = new RelationBinaire(cardMax, alea);
+            RelationBinaire ferT = R.hasse().ferTrans().ferTrans();
+            boolean result = true;
+            if (R.matAdj.length != ferT.matAdj.length) result = false;
+            else
+                for (int i = 0; i < R.matAdj.length; i++) {
+                    if (R.matAdj[i].length != ferT.matAdj[i].length) result = false;
+                    else for (int j = 0; j < R.matAdj[i].length; j++)
+                        if (R.matAdj[i][j] != ferT.matAdj[i][j]) {
+                            result = false;
+                            break;
+                        }
+                }
+            if (R.estRelOrdre() && !result) return false;
+        }
+        return true;
+    }
+
 } // fin RelationBinaire
