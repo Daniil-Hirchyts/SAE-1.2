@@ -537,10 +537,9 @@ public class RelationBinaire {
         System.out.println("fermeture transitive de Hasse de this avec boucles = " + ferTransHasseBoucles);
     }
 
-    //Ajouter une méthode EE descendant (int x) retournant l'ensemble des descendants d'un élément r de E dans la relation. Utiliser l'ensemble succ(x)
     public EE descendants(int x) {
-        EE res = new EE(n);
-        for (int i = 0; i < n; i++) if (matAdj[x][i]) res.ajoutElt(i);
+        EE res = succ(x);
+        for (int i = 0; i < n; i++) if (res.contient(i)) res = res.union(succ(i));
         return res;
     }
 } // fin RelationBinaire

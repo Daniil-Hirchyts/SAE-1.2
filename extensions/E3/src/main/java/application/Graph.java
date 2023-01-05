@@ -28,7 +28,7 @@ public class Graph {
         int tempCountRelations = 0;
         for (int i = 0; i < nodes.length; i++) {
             nodes[i] = new Noeud(new Circle(), random.nextInt(500) + 50, random.nextInt(500) + 50);
-            Label label = new Label("" + (i + 1));
+            Label label = new Label("" + (i));
             etiquettes[i] = new Etiquette(label, nodes[i].getX(), nodes[i].getY());
         }
         for (int i = 0; i < matrix.length; i++) {
