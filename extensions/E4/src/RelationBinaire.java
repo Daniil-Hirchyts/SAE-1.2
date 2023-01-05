@@ -510,4 +510,31 @@ public class RelationBinaire {
         RelationBinaire ferTransHasseBoucles = ferTransHasse.ferTrans();
         System.out.println("fermeture transitive de Hasse de this avec boucles = " + ferTransHasseBoucles);
     }
+    public static boolean booleanverifCNordre(int nbRel,int cardMax){
+        double alea=Math.random();
+        for(int i=0;i<nbRel;i++){
+            RelationBinaire R=new RelationBinaire(cardMax,alea);
+            RelationBinaire ferT= R.hasse().ferTrans().ferTrans();
+            boolean result=true;
+            if (R.matAdj.length != ferT.matAdj.length) {
+                result= false;
+            } else {
+                for (int i= 0; i< R.matAdj.length; i++) {
+                    if (R.matAdj[i].length != ferT[i].length) {
+                        result= false;
+                    } else {
+                        for (int j=0; j< R.matAdj[i].length; j++) {
+                            if (R.matAdj[i][j] != ferT.matAdj[i][j]) {
+                                result= false
+                            }
+                        }
+                    }
+                }
+            }
+            if(R.estRelOrdre() && !result){
+                return false;
+            }
+        }
+        return true;
+    }
 } // fin RelationBinaire
