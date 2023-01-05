@@ -148,10 +148,8 @@ public class EE {
      * @return -1 si this est plein ; 0 si x deja present et pas ajoute ; 1 si x ajoute
      */
     public int ajoutElt(int x) {
-        if (this.deborde())
-            return -1;
-        else if (this.contient(x))
-            return 0;
+        if (this.deborde()) return -1;
+        else if (this.contient(x)) return 0;
         else {
             this.ajoutPratique(x);
             return 1;
@@ -160,8 +158,7 @@ public class EE {
 
     public int retraitUnElt() {
         // Pre-requis : ensemble this est non vide
-        // Action/resultat : enleve un element de this (le dernier, par commodite)
-        //                   et le retourne
+        // Action/resultat : enleve un element de this (le dernier, par commodite) et le retourne
         this.cardinal--;
         return this.ensTab[this.cardinal];
     }
@@ -242,7 +239,6 @@ public class EE {
         // Principe: recopie l'objet courant puis lui ajoute (si besoin) les elements de e
         //
         EE ens = new EE(this);
-
         for (int i = 0; i < e.cardinal; i++) {
             ens.ajoutElt(e.ensTab[i]);
         }
@@ -283,22 +279,5 @@ public class EE {
             }
         }
         return ens;
-    }
-    public EE descendant(int x){
-        int [] tab=new int[x+1];
-        int y=x;
-        for(int i=0;i<=y;y--){
-            tab[i]=y;
-            tab[x-i]=i;
-            i++;
-        }
-        EE res=new EE(tab,x+1);
-        return res;
-    }
-
-    public static void main(String[] args) {
-        EE f=new EE(10);
-        System.out.println(f.descendant(10));
-
     }
 }

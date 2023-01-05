@@ -21,8 +21,7 @@ public class RelationBinaire {
         this.n = nb;
         this.matAdj = new boolean[nb][nb];
         this.m = 0;
-        this.tabSucc = new EE[nb];
-        for (int i = 0; i < nb; i++) this.tabSucc[i] = new EE(nb);
+        this.tabSucc = new EE[this.n];
     }
 
     //______________________________________________
@@ -36,9 +35,16 @@ public class RelationBinaire {
      */
     public RelationBinaire(int nb, double p) {
         this(nb);
+        for (int i = 0; i < this.n; i++) {
+            this.tabSucc[i] = new EE(this.n);
+        }
         for (int i = 0; i < nb; i++)
             for (int j = 0; j < nb; j++)
-                if (Math.random() <= p) this.ajouteCouple(i, j);
+                if (Math.random() < p) {
+                    this.matAdj[i][j] = true;
+                    this.tabSucc[i].ajoutPratique(j);
+                    this.m++;
+                }
     }
 
     /**
@@ -51,11 +57,19 @@ public class RelationBinaire {
         if (egal) {
             for (int i = 0; i < nb; i++)
                 for (int j = 0; j < nb; j++)
-                    if (i == j) this.ajouteCouple(i, j);
+                    if (i == j) {
+                        this.matAdj[i][j] = true;
+                        this.tabSucc[i].ajoutPratique(j);
+                        this.m++;
+                    }
         } else {
             for (int i = 0; i < nb; i++)
                 for (int j = 0; j < nb; j++)
-                    if (i <= j) this.ajouteCouple(i, j);
+                    if (i <= j) {
+                        this.matAdj[i][j] = true;
+                        this.tabSucc[i].ajoutPratique(j);
+                        this.m++;
+                    }
         }
     }
 
@@ -71,7 +85,11 @@ public class RelationBinaire {
         this(mat.length);
         for (int i = 0; i < mat.length; i++)
             for (int j = 0; j < mat.length; j++)
-                if (mat[i][j]) this.ajouteCouple(i, j);
+                if (mat[i][j]) {
+                    this.matAdj[i][j] = true;
+                    this.tabSucc[i].ajoutPratique(j);
+                    this.m++;
+                }
     }
 
     //______________________________________________
@@ -84,9 +102,13 @@ public class RelationBinaire {
      */
     public RelationBinaire(EE[] tab) {
         this(tab.length);
-        for (int i = 0; i < tab.length; i++)
-            for (int j = 0; j < tab.length; j++)
-                if (tab[i].contient(j)) this.ajouteCouple(i, j);
+        for (int i = 0; i < this.n; i++)
+            for (int j = 0; j < this.n; j++)
+                if (tab[i].contient(j)) {
+                    this.matAdj[i][j] = true;
+                    this.tabSucc[i].ajoutPratique(j);
+                    this.m++;
+                }
     }
 
     //______________________________________________
@@ -97,9 +119,13 @@ public class RelationBinaire {
      */
     public RelationBinaire(RelationBinaire r) {
         this(r.n);
-        for (int i = 0; i < r.n; i++)
-            for (int j = 0; j < r.n; j++)
-                if (r.matAdj[i][j]) this.ajouteCouple(i, j);
+        for (int i = 0; i < this.n; i++)
+            for (int j = 0; j < this.n; j++)
+                if (r.matAdj[i][j]) {
+                    this.matAdj[i][j] = true;
+                    this.tabSucc[i].ajoutPratique(j);
+                    this.m++;
+                }
     }
 
     //______________________________________________
