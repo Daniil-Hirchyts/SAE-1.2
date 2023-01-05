@@ -35,9 +35,12 @@ public class RelationBinaire {
      */
     public RelationBinaire(int nb, double p) {
         this(nb);
+        for (int i = 0; i < this.n; i++) {
+            this.tabSucc[i] = new EE(this.n);
+        }
         for (int i = 0; i < nb; i++)
             for (int j = 0; j < nb; j++)
-                if (Math.random() <= p) {
+                if (Math.random() < p) {
                     this.matAdj[i][j] = true;
                     this.tabSucc[i].ajoutPratique(j);
                     this.m++;
@@ -532,5 +535,12 @@ public class RelationBinaire {
         System.out.println("fermeture transitive de Hasse de this = " + ferTransHasse);
         RelationBinaire ferTransHasseBoucles = ferTransHasse.ferTrans();
         System.out.println("fermeture transitive de Hasse de this avec boucles = " + ferTransHasseBoucles);
+    }
+
+    //Ajouter une méthode EE descendant (int x) retournant l'ensemble des descendants d'un élément r de E dans la relation. Utiliser l'ensemble succ(x)
+    public EE descendants(int x) {
+        EE res = new EE(n);
+        for (int i = 0; i < n; i++) if (matAdj[x][i]) res.ajoutElt(i);
+        return res;
     }
 } // fin RelationBinaire

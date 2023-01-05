@@ -32,5 +32,9 @@ public class MainRelationBinaire {
             System.out.println("R" + i + " : ");
             tab[i].afficheDivers();
         }
+
+        //test public EE descendants(int x)
+        System.out.println("descendants de 0 : " + tab[0].descendants(0));
+
     }
 } // fin MainRelationBinaire
