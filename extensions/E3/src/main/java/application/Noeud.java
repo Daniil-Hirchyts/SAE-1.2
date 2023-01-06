@@ -18,7 +18,7 @@ public class Noeud {
         this.y = y;
         circle.setCenterX(x);
         circle.setCenterY(y);
-        circle.setRadius(12);
+        circle.setRadius(15);
         circle.setFill(Color.rgb(random.nextInt(155) + 100, random.nextInt(155) + 100, random.nextInt(155) + 100));
         circle.setStroke(Color.rgb(0, 0, 0));
         circle.setStrokeWidth(2);

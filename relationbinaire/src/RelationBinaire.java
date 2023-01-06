@@ -35,9 +35,7 @@ public class RelationBinaire {
      */
     public RelationBinaire(int nb, double p) {
         this(nb);
-        for (int i = 0; i < this.n; i++) {
-            this.tabSucc[i] = new EE(this.n);
-        }
+        for (int i = 0; i < this.n; i++) this.tabSucc[i] = new EE(this.n);
         for (int i = 0; i < nb; i++)
             for (int j = 0; j < nb; j++)
                 if (Math.random() < p) {

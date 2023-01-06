@@ -25,7 +25,7 @@ public class MatrixDialog {
         table.setEditable(true);
 
         for (int i = 0; i < numElements; i++) {
-            TableColumn<ObservableList, String> column = new TableColumn<>("" + (i + 1));
+            TableColumn<ObservableList, String> column = new TableColumn<>("" + (i));
             final int index = i;
             column.setStyle("-fx-alignment: CENTER;");
             column.setCellValueFactory(param -> new ReadOnlyObjectWrapper<>(param.getValue().get(index)).asString());
@@ -72,7 +72,19 @@ public class MatrixDialog {
             event.consume();
         });
 
-        HBox hBox = new HBox(cancelButton, validateButton);
+        Button randomButton = new Button("Random");
+
+        randomButton.setOnAction(event -> {
+            table.getItems().clear();
+            for (int i = 0; i < numElements; i++) {
+                ObservableList row = FXCollections.observableArrayList();
+                for (int j = 0; j < numElements; j++) row.add((int) (Math.random() * 2));
+                table.getItems().add(row);
+            }
+            event.consume();
+        });
+
+        HBox hBox = new HBox(cancelButton, randomButton, validateButton);
         hBox.setSpacing(10);
         hBox.setPadding(new Insets(10, 10, 10, 10));
         hBox.setStyle("-fx-alignment: center;");

@@ -19,8 +19,6 @@ public class Cycle {
     private void createCycle() {
         cycle = new Arc();
         cycle.setType(ArcType.OPEN);
-        cycle.setCenterX(node.getCenterX());
-        cycle.setCenterY(node.getCenterY() + 25);
         cycle.setRadiusX(10);
         cycle.setRadiusY(20);
         cycle.setStartAngle(-225);
@@ -30,12 +28,11 @@ public class Cycle {
         cycle.setStrokeWidth(2);
         flecheCycle = new Polygon();
         flecheCycle.getPoints().addAll(0.0, 0.0,
-                -5.0, -5.0,
-                -5.0, 5.0);
+                -6.0, -6.0,
+                -6.0, 6.0);
         flecheCycle.setFill(Color.BLACK);
-        flecheCycle.setTranslateX(node.getCenterX() + 11);
-        flecheCycle.setTranslateY(node.getCenterY() + 13);
         flecheCycle.setRotate(-120);
+        updatePosition();
     }
 
     public Arc getCycle() {
@@ -46,9 +43,9 @@ public class Cycle {
 
     public void updatePosition() {
         cycle.setCenterX(node.getCenterX());
-        cycle.setCenterY(node.getCenterY() + 25);
-        flecheCycle.setTranslateX(node.getCenterX() + 11);
-        flecheCycle.setTranslateY(node.getCenterY() + 13);
+        cycle.setCenterY(node.getCenterY() + 27);
+        flecheCycle.setTranslateX(node.getCenterX() + 10);
+        flecheCycle.setTranslateY(node.getCenterY() + 15);
     }
 
 }

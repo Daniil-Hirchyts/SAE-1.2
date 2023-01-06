@@ -15,8 +15,8 @@ public class Fleche {
         this.node2 = node2;
         fleche = new Polygon();
         fleche.getPoints().addAll(0.0, 0.0,
-                -5.0, -5.0,
-                -5.0, 5.0);
+                -6.0, -6.0,
+                -6.0, 6.0);
         fleche.setFill(Color.BLACK);
         updatePosition();
     }
