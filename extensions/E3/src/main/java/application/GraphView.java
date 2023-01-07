@@ -26,9 +26,6 @@ public class GraphView {
     private static Relation[] relations;
     private static Fleche[] fleches;
     private static Cycle[] cycles;
-    private static VBox vBox = new VBox();
-    private static VBox mainBox = new VBox();
-    private static MenuBar menuBar = new MenuBar();
     private VBox dialogBox = new VBox();
 
     public static void show(Stage primaryStage, int[][] matrix) {
@@ -54,15 +51,27 @@ public class GraphView {
         graph.addToRoot(root, nodes, etiquettes, relations, fleches, cycles);
 
         Menu modifierMenu = new Menu("Graphe");
+        MenuItem recommencer = new MenuItem("Recommencer");
         MenuItem save = new MenuItem("Sauvegarder");
         MenuItem reinitialiserMenuItem = new MenuItem("Réinitialiser la position");
         MenuItem couleurMenuItem = new MenuItem("Changer les couleurs");
-        modifierMenu.getItems().addAll(save, reinitialiserMenuItem, couleurMenuItem);
+        modifierMenu.getItems().addAll(recommencer, save, reinitialiserMenuItem, couleurMenuItem);
 
         Menu applicationMenu = new Menu("Application");
         MenuItem quitterMenuItem = new MenuItem("Quitter");
         applicationMenu.getItems().addAll(quitterMenuItem);
+        MenuBar menuBar = new MenuBar();
         menuBar.getMenus().addAll(modifierMenu, applicationMenu);
+
+        recommencer.setOnAction(event -> {
+            try {
+                root.getChildren().clear();
+                primaryStage.close();
+                MatrixDialog.show(primaryStage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         save.setOnAction(event -> {
             try {
@@ -102,6 +111,10 @@ public class GraphView {
         }
 
         menuBar.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
+
+        VBox vBox = new VBox();
+
+        VBox mainBox = new VBox();
 
         vBox.getChildren().addAll(menuBar);
         mainBox.getChildren().addAll(vBox, root);

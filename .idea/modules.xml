@@ -11,7 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/extensions/E7/E7.iml" filepath="$PROJECT_DIR$/extensions/E7/E7.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SAE-1.2.iml" filepath="$PROJECT_DIR$/.idea/SAE-1.2.iml" />
       <module fileurl="file://$PROJECT_DIR$/extensions/extensions.iml" filepath="$PROJECT_DIR$/extensions/extensions.iml" />
-      <module fileurl="file://$PROJECT_DIR$/relationbinaire/relationbinaire.iml" filepath="$PROJECT_DIR$/relationbinaire/relationbinaire.iml" />
+      <module fileurl="file://$PROJECT_DIR$/relations-binaires/relations-binaires.iml" filepath="$PROJECT_DIR$/relations-binaires/relations-binaires.iml" />
     </modules>
   </component>
 </project>
