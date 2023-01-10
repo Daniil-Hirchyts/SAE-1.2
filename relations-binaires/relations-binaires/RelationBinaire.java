@@ -20,10 +20,12 @@ public class RelationBinaire {
     public RelationBinaire(int nb) {
         this.n = nb;
         this.matAdj = new boolean[nb][nb];
+        for (int i = 0; i < nb; i++)
+            for (int j = 0; j < nb; j++) this.matAdj[i][j] = false;
+        this.tabSucc = new EE[nb];
+        for (int i = 0; i < this.n; i++) this.tabSucc[i] = new EE(nb);
         this.m = 0;
-        this.tabSucc = new EE[this.n];
     }
-
     //______________________________________________
 
     /**
@@ -65,7 +67,7 @@ public class RelationBinaire {
                 for (int j = 0; j < nb; j++)
                     if (i <= j) {
                         this.matAdj[i][j] = true;
-                        this.tabSucc[i].ajoutPratique(j);
+                        this.tabSucc[i].ajoutElt(j);
                         this.m++;
                     }
         }
@@ -81,6 +83,7 @@ public class RelationBinaire {
      */
     public RelationBinaire(boolean[][] mat) {
         this(mat.length);
+        for (int i = 0; i < this.n; i++) this.tabSucc[i] = new EE(this.n);
         for (int i = 0; i < mat.length; i++)
             for (int j = 0; j < mat.length; j++)
                 if (mat[i][j]) {
@@ -104,7 +107,7 @@ public class RelationBinaire {
             for (int j = 0; j < this.n; j++)
                 if (tab[i].contient(j)) {
                     this.matAdj[i][j] = true;
-                    this.tabSucc[i].ajoutPratique(j);
+                    this.tabSucc[i].ajoutElt(j);
                     this.m++;
                 }
     }
@@ -534,4 +537,6 @@ public class RelationBinaire {
         RelationBinaire ferTransHasseBoucles = ferTransHasse.ferTrans();
         System.out.println("fermeture transitive de Hasse de this avec boucles = " + ferTransHasseBoucles);
     }
+
+
 } // fin RelationBinaire
