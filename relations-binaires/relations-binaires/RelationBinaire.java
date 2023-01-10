@@ -538,5 +538,4 @@ public class RelationBinaire {
         System.out.println("fermeture transitive de Hasse de this avec boucles = " + ferTransHasseBoucles);
     }
 
-
 } // fin RelationBinaire
