@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.*;
 
-public class testsRBs {
+public class TestsBasiqueRBs {
 
     public static void main(String[] args) {
 
@@ -17,21 +17,21 @@ public class testsRBs {
 
         // Ici on lance les tests, si l'appels aux méthodes concernées déclenche une exception ou fait une boucle infinie, pas de pb, on passera qd même au suivant.
 
-        note += runTest(testsRBs::testTransposee, "testTransposee",1); // Le dernier paramètre est le barême du test.
-        note += runTest(testsRBs::testProduit, "testProduit",1);
-        note += runTest(testsRBs::testOpBool, "testOpBool",1);
-        note += runTest(testsRBs::testEstVide, "testEstVide",1);
-        note += runTest(testsRBs::testAppartient, "testAppartient",1);
-        note += runTest(testsRBs::testAjouteCouple, "testAjouteCouple",1);
-        note += runTest(testsRBs::testAvecBoucles, "testAvecBoucles",1);
-        note += runTest(testsRBs::testUnion, "testUnion",1);
-        note += runTest(testsRBs::testIntersection, "testIntersection",1);
-        note += runTest(testsRBs::testComplementaire, "testComplementaire",1);
-        note += runTest(testsRBs::testEstIncluse, "testEstIncluse",1);
-        note += runTest(testsRBs::testEstSymetrique, "testEstSymetrique",1);
-        note += runTest(testsRBs::testEstTransitive, "testEstTransitive",1);
-        note += runTest(testsRBs::testEstRelOrdre, "testEstRelOrdre",1);
-        note += runTest(testsRBs::testFerTrans, "testFerTrans",1);
+        note += runTest(TestsBasiqueRBs::testTransposee, "testTransposee",1); // Le dernier paramètre est le barême du test.
+        note += runTest(TestsBasiqueRBs::testProduit, "testProduit",1);
+        note += runTest(TestsBasiqueRBs::testOpBool, "testOpBool",1);
+        note += runTest(TestsBasiqueRBs::testEstVide, "testEstVide",1);
+        note += runTest(TestsBasiqueRBs::testAppartient, "testAppartient",1);
+        note += runTest(TestsBasiqueRBs::testAjouteCouple, "testAjouteCouple",1);
+        note += runTest(TestsBasiqueRBs::testAvecBoucles, "testAvecBoucles",1);
+        note += runTest(TestsBasiqueRBs::testUnion, "testUnion",1);
+        note += runTest(TestsBasiqueRBs::testIntersection, "testIntersection",1);
+        note += runTest(TestsBasiqueRBs::testComplementaire, "testComplementaire",1);
+        note += runTest(TestsBasiqueRBs::testEstIncluse, "testEstIncluse",1);
+        note += runTest(TestsBasiqueRBs::testEstSymetrique, "testEstSymetrique",1);
+        note += runTest(TestsBasiqueRBs::testEstTransitive, "testEstTransitive",1);
+        note += runTest(TestsBasiqueRBs::testEstRelOrdre, "testEstRelOrdre",1);
+        note += runTest(TestsBasiqueRBs::testFerTrans, "testFerTrans",1);
 
         System.out.println("fin des tests : note sur 15 = " + note);
 
