@@ -223,10 +223,7 @@ public class RelationBinaire {
      * résultat : vrai ssi this est vide
      */
     public boolean estVide() {
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                if (matAdj[i][j]) return false;
-        return true;
+        return this.m == 0;
     }
 
     //______________________________________________
@@ -236,10 +233,17 @@ public class RelationBinaire {
      * résultat : vrai ssi this est pleine (contient tous les couples d'éléments de E)
      */
     public boolean estPleine() {
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                if (!matAdj[i][j]) return false;
-        return true;
+        int i = 0, j = 0;
+        boolean plein = true;
+        while (i < n && plein) {
+            while (j < n && plein) {
+                if (!matAdj[i][j]) plein = false;
+                j++;
+            }
+            j = 0;
+            i++;
+        }
+        return plein;
     }
 
     //______________________________________________
@@ -370,10 +374,17 @@ public class RelationBinaire {
      * résultat : vrai ssi this est incluse dans r
      */
     public boolean estIncluse(RelationBinaire r) {
-        for (int i = 0; i < this.n; i++)
-            for (int j = 0; j < this.n; j++)
-                if (this.matAdj[i][j] && !r.matAdj[i][j]) return false;
-        return true;
+        int i = 0, j = 0;
+        boolean inclus = true;
+        while (i < n && inclus) {
+            while (j < n && inclus) {
+                if (this.matAdj[i][j] && !r.matAdj[i][j]) inclus = false;
+                j++;
+            }
+            j = 0;
+            i++;
+        }
+        return inclus;
     }
 
     // C) Théorie des graphes orientés
@@ -384,10 +395,17 @@ public class RelationBinaire {
      * résultat : vrai ssi this est égale à r
      */
     public boolean estEgale(RelationBinaire r) {
-        for (int i = 0; i < this.n; i++)
-            for (int j = 0; j < this.n; j++)
-                if (this.matAdj[i][j] != r.matAdj[i][j]) return false;
-        return true;
+        int i = 0, j = 0;
+        boolean egal = true;
+        while (i < n && egal) {
+            while (j < n && egal) {
+                if (this.matAdj[i][j] != r.matAdj[i][j]) egal = false;
+                j++;
+            }
+            j = 0;
+            i++;
+        }
+        return egal;
     }
 
     //______________________________________________
@@ -423,8 +441,13 @@ public class RelationBinaire {
      * résultat : vrai ssi this est réflexive
      */
     public boolean estReflexive() {
-        for (int i = 0; i < n; i++) if (!matAdj[i][i]) return false;
-        return true;
+        int i = 0;
+        boolean reflex = true;
+        while (i < n && reflex) {
+            if (!matAdj[i][i]) reflex = false;
+            i++;
+        }
+        return reflex;
     }
 
     //______________________________________________
@@ -434,8 +457,13 @@ public class RelationBinaire {
      * résultat : vrai ssi this est antiréflexive
      */
     public boolean estAntireflexive() {
-        for (int i = 0; i < n; i++) if (matAdj[i][i]) return false;
-        return true;
+        int i = 0;
+        boolean antireflex = true;
+        while (i < n && antireflex) {
+            if (matAdj[i][i]) antireflex = false;
+            i++;
+        }
+        return antireflex;
     }
 
     //______________________________________________
@@ -445,10 +473,17 @@ public class RelationBinaire {
      * résultat : vrai ssi this est symétrique
      */
     public boolean estSymetrique() {
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                if (matAdj[i][j] != matAdj[j][i]) return false;
-        return true;
+        int i = 0, j = 0;
+        boolean sym = true;
+        while (i < n && sym) {
+            while (j < n && sym) {
+                if (matAdj[i][j] != matAdj[j][i]) sym = false;
+                j++;
+            }
+            j = 0;
+            i++;
+        }
+        return sym;
     }
 
     //______________________________________________
@@ -458,10 +493,17 @@ public class RelationBinaire {
      * résultat : vrai ssi this est antisymétrique
      */
     public boolean estAntisymetrique() {
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                if (matAdj[i][j] && matAdj[j][i] && i != j) return false;
-        return true;
+        int i = 0, j = 0;
+        boolean antisym = true;
+        while (i < n && antisym) {
+            while (j < n && antisym) {
+                if (matAdj[i][j] && matAdj[j][i] && i != j) antisym = false;
+                j++;
+            }
+            j = 0;
+            i++;
+        }
+        return antisym;
     }
 
     //______________________________________________
@@ -471,12 +513,23 @@ public class RelationBinaire {
      * résultat : vrai ssi this est transitive
      */
     public boolean estTransitive() {
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                if (matAdj[i][j])
-                    for (int k = 0; k < n; k++)
-                        if (matAdj[j][k] && !matAdj[i][k]) return false;
-        return true;
+        int j = 0, i = 0, k = 0;
+        boolean transitive = true;
+        while (i < n && transitive) {
+            while (j < n && transitive) {
+                if (matAdj[i][j]) {
+                    while (k < n && transitive) {
+                        if (matAdj[j][k] && !matAdj[i][k]) transitive = false;
+                        k++;
+                    }
+                    k = 0;
+                }
+                j++;
+            }
+            j = 0;
+            i++;
+        }
+        return transitive;
     }
 
     //______________________________________________
@@ -486,7 +539,7 @@ public class RelationBinaire {
      * résultat : vrai ssi this est une relation d'ordre
      */
     public boolean estRelOrdre() {
-        return this.estReflexive() && this.estTransitive();
+        return this.estReflexive() && this.estTransitive() && this.estAntisymetrique();
     }
 
     //______________________________________________

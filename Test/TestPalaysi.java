@@ -3,10 +3,9 @@ import java.util.Arrays;
 
 public class TestPalaysi {
     public static void main(String[] args) throws Exception {
-        test_3();
     }
 
-    public static void test_3() throws Exception {
+    public static void test_union() throws Exception {
         boolean[][] MA = {{true, true, true, false}, {false, false, true, false}, {true, false, false, false}, {false, false, false, false}};
         RelationBinaire A = new RelationBinaire(MA);
         RelationBinaire DA = new RelationBinaire(MA);// A et DA sont égales mais distinctes et devraient encore l'être à la fin du test (sauf si vous modifiez A lors de l'union)
@@ -73,7 +72,7 @@ public class TestPalaysi {
         }
     }
 
-    public static void test_2() {
+    public static void test_enleveCouple() {
         RelationBinaire rb = new RelationBinaire(4);
         rb.ajouteCouple(0, 0);
         rb.ajouteCouple(0, 1);
@@ -98,4 +97,5 @@ public class TestPalaysi {
         System.out.println(!rb.estPleine());
 
     }
+
 }

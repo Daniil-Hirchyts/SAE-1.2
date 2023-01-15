@@ -1,15 +1,9 @@
 //placer ce fichier dans le meme dossier que les *.java fournis par les étudiants, et lancer le main de ce fichier.
 
 import java.util.Arrays;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 import java.util.concurrent.*;
 
-public class TestsBasiqueRBs {
+public class TestsBasiqueRBsExtension2 {
 
     public static void main(String[] args) {
 
@@ -17,24 +11,23 @@ public class TestsBasiqueRBs {
 
         // Ici on lance les tests, si l'appels aux méthodes concernées déclenche une exception ou fait une boucle infinie, pas de pb, on passera qd même au suivant.
 
-        note += runTest(TestsBasiqueRBs::testTransposee, "testTransposee",1); // Le dernier paramètre est le barême du test.
-        note += runTest(TestsBasiqueRBs::testProduit, "testProduit",1);
-        note += runTest(TestsBasiqueRBs::testOpBool, "testOpBool",1);
-        note += runTest(TestsBasiqueRBs::testEstVide, "testEstVide",1);
-        note += runTest(TestsBasiqueRBs::testAppartient, "testAppartient",1);
-        note += runTest(TestsBasiqueRBs::testAjouteCouple, "testAjouteCouple",1);
-        note += runTest(TestsBasiqueRBs::testAvecBoucles, "testAvecBoucles",1);
-        note += runTest(TestsBasiqueRBs::testUnion, "testUnion",1);
-        note += runTest(TestsBasiqueRBs::testIntersection, "testIntersection",1);
-        note += runTest(TestsBasiqueRBs::testComplementaire, "testComplementaire",1);
-        note += runTest(TestsBasiqueRBs::testEstIncluse, "testEstIncluse",1);
-        note += runTest(TestsBasiqueRBs::testEstSymetrique, "testEstSymetrique",1);
-        note += runTest(TestsBasiqueRBs::testEstTransitive, "testEstTransitive",1);
-        note += runTest(TestsBasiqueRBs::testEstRelOrdre, "testEstRelOrdre",1);
-        note += runTest(TestsBasiqueRBs::testFerTrans, "testFerTrans",1);
-        note += runTest(TestsBasiqueRBs::testHasse, "testHasse",1);
+        note += runTest(TestsBasiqueRBsExtension2::testTransposee, "testTransposee",1); // Le dernier paramètre est le barême du test.
+        note += runTest(TestsBasiqueRBsExtension2::testProduit, "testProduit",1);
+        note += runTest(TestsBasiqueRBsExtension2::testOpBool, "testOpBool",1);
+        note += runTest(TestsBasiqueRBsExtension2::testEstVide, "testEstVide",1);
+        note += runTest(TestsBasiqueRBsExtension2::testAppartient, "testAppartient",1);
+        note += runTest(TestsBasiqueRBsExtension2::testAjouteCouple, "testAjouteCouple",1);
+        note += runTest(TestsBasiqueRBsExtension2::testAvecBoucles, "testAvecBoucles",1);
+        note += runTest(TestsBasiqueRBsExtension2::testUnion, "testUnion",1);
+        note += runTest(TestsBasiqueRBsExtension2::testIntersection, "testIntersection",1);
+        note += runTest(TestsBasiqueRBsExtension2::testComplementaire, "testComplementaire",1);
+        note += runTest(TestsBasiqueRBsExtension2::testEstIncluse, "testEstIncluse",1);
+        note += runTest(TestsBasiqueRBsExtension2::testEstSymetrique, "testEstSymetrique",1);
+        note += runTest(TestsBasiqueRBsExtension2::testEstTransitive, "testEstTransitive",1);
+        note += runTest(TestsBasiqueRBsExtension2::testEstRelOrdre, "testEstRelOrdre",1);
+        note += runTest(TestsBasiqueRBsExtension2::testFerTrans, "testFerTrans",1);
 
-        System.out.println("fin des tests : note sur 16 = " + note);
+        System.out.println("fin des tests : note sur 15 = " + note);
 
     }
 
@@ -147,7 +140,7 @@ public class TestsBasiqueRBs {
         };
 
         RelationBinaire RB = new RelationBinaire(m1);
-        if(RB.estVide())
+        if(RB.estVideBis())
             return 0;
         else
             return 1;
@@ -163,7 +156,7 @@ public class TestsBasiqueRBs {
         };
 
         RelationBinaire RB = new RelationBinaire(m1);
-        if(RB.appartient(0,0) && !RB.appartient(2,2))
+        if(RB.appartientBis(0,0) && !RB.appartientBis(2,2))
             return 1;
         else
             return 0;
@@ -180,8 +173,8 @@ public class TestsBasiqueRBs {
         };
 
         RelationBinaire RB = new RelationBinaire(m1);
-        RB.ajouteCouple(0,1);
-        if(RB.appartient(0,1))
+        RB.ajouteCoupleBis(0,1);
+        if(RB.appartientBis(0,1))
             return 1;
         else
             return 0;
@@ -198,9 +191,9 @@ public class TestsBasiqueRBs {
         };
 
         RelationBinaire RB = new RelationBinaire(m1);
-        RelationBinaire RB2 = RB.avecBoucles();
+        RelationBinaire RB2 = RB.avecBouclesBis();
         for(int i = 0; i < 3; i++)
-            if(!RB2.appartient(i,i))
+            if(!RB2.appartientBis(i,i))
                 return 0;
         return 1;
     }
@@ -225,10 +218,10 @@ public class TestsBasiqueRBs {
 
         RelationBinaire RB = new RelationBinaire(m1);
         RelationBinaire RB2 = new RelationBinaire(m2);
-        RelationBinaire RB3 = RB.union(RB2);
+        RelationBinaire RB3 = RB.unionBis(RB2);
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++)
-                if(RB3.appartient(i,j) != (RB.appartient(i,j) | RB2.appartient(i,j)))
+                if(RB3.appartientBis(i,j) != (RB.appartientBis(i,j) | RB2.appartientBis(i,j)))
                     return 0;
         return 1;
     }
@@ -253,10 +246,10 @@ public class TestsBasiqueRBs {
 
         RelationBinaire RB = new RelationBinaire(m1);
         RelationBinaire RB2 = new RelationBinaire(m2);
-        RelationBinaire RB3 = RB.intersection(RB2);
+        RelationBinaire RB3 = RB.intersectionBis(RB2);
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++)
-                if(RB3.appartient(i,j) != m[i][j])
+                if(RB3.appartientBis(i,j) != m[i][j])
                     return 0;
         return 1;
     }
@@ -277,10 +270,10 @@ public class TestsBasiqueRBs {
         };
 
         RelationBinaire RB = new RelationBinaire(m1);
-        RelationBinaire RB2 = RB.complementaire();
+        RelationBinaire RB2 = RB.complementaireBis();
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++)
-                if(RB2.appartient(i,j) != m[i][j])
+                if(RB2.appartientBis(i,j) != m[i][j])
                     return 0;
         return 1;
     }
@@ -300,7 +293,7 @@ public class TestsBasiqueRBs {
 
         RelationBinaire RB = new RelationBinaire(m1);
         RelationBinaire RB2 = new RelationBinaire(m);
-        if(RB2.estIncluse(RB))
+        if(RB2.estIncluseBis(RB))
             return 1;
         else
             return 0;
@@ -314,7 +307,7 @@ public class TestsBasiqueRBs {
         };
 
         RelationBinaire RB = new RelationBinaire(m1);
-        if(RB.estSymetrique())
+        if(RB.estSymetriqueBis())
             return 1;
         else return 0;
     }
@@ -328,7 +321,7 @@ public class TestsBasiqueRBs {
         };
 
         RelationBinaire RB = new RelationBinaire(m1);
-        if(RB.estTransitive())
+        if(RB.estTransitiveBis())
             return 1;
         else return 0;
     }
@@ -341,7 +334,7 @@ public class TestsBasiqueRBs {
         };
 
         RelationBinaire RB = new RelationBinaire(m1);
-        if(RB.estRelOrdre())
+        if(RB.estRelOrdreBis())
             return 1;
         else return 0;
     }
@@ -359,10 +352,10 @@ public class TestsBasiqueRBs {
         };
 
         RelationBinaire RB = new RelationBinaire(m1);
-        RelationBinaire RB2 = RB.ferTrans();
+        RelationBinaire RB2 = RB.ferTransBis();
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++)
-                if(RB2.appartient(i,j) != m2[i][j])
+                if(RB2.appartientBis(i,j) != m2[i][j])
                     return 0;
         return 1;
     }
@@ -381,10 +374,10 @@ public class TestsBasiqueRBs {
         };
 
         RelationBinaire RB = new RelationBinaire(m1);
-        RelationBinaire RB2 = RB.ferTrans();
+        RelationBinaire RB2 = RB.ferTransBis();
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++)
-                if(RB2.appartient(i,j) != m2[i][j])
+                if(RB2.appartientBis(i,j) != m2[i][j])
                     return 0;
         return 1;
     }
