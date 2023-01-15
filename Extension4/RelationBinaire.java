@@ -284,6 +284,7 @@ public class RelationBinaire {
         if (!this.matAdj[x][y]) {
             this.matAdj[x][y] = true;
             this.m++;
+            this.tabSucc[x].ajoutElt(y);
         }
     }
     //______________________________________________

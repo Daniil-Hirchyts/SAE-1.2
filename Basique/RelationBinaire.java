@@ -8,7 +8,6 @@ public class RelationBinaire {
     private int m;           // cardinal de R
     private EE[] tabSucc;    // tableau des ensembles de successeurs
 
-
     // constructeurs
 
     //______________________________________________
@@ -263,6 +262,7 @@ public class RelationBinaire {
         if (!this.matAdj[x][y]) {
             this.matAdj[x][y] = true;
             this.m++;
+            this.tabSucc[x].ajoutElt(y);
         }
     }
 
